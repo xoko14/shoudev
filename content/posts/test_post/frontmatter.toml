@@ -1,0 +1,6 @@
+title = "Test post"
+description = "This is a test post lmao"
+date_posted = "09-03-2023"
+tags = ["test", "todo"]
+author = "me"
+alias = "test-post"
