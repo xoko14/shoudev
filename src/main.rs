@@ -8,6 +8,7 @@ use crate::content::PostFrontmatter;
 
 mod content;
 mod templates;
+mod markdown;
 
 lazy_static::lazy_static!{
     static ref POSTS: Vec<(PostFrontmatter, String)> = content::find_posts().expect("TODO");
@@ -70,9 +71,7 @@ async fn debug_post(Path(post_alias): Path<String>) -> (StatusCode, Html<String>
         Err(_) => {return templates::error_404().await}
     };
 
-    let parser = Parser::new(&post_body);
-    let mut html_output = String::new();
-    html::push_html(&mut html_output, parser);
+    let html_output = markdown::parse(&post_body);
     
     templates::render_post(post, &html_output)
 }
