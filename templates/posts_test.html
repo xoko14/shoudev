@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
     {% for post in posts %}
-    <li><a href="http://localhost:3000/debug/post/{{ post.alias }}">{{ post.title }}</a></li>
+    <li><a href="/debug/post/{{ post.alias }}">{{ post.title }}</a></li>
     {% endfor %}
 </ul>
 {% endblock content %}
