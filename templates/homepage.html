@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Shou's site{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/sonokai.css">
+{% endblock head %}
+{% block content %}
+{{ page_body | safe }}
+<span><a href="/debug/posts" style="color: white;text-decoration: none;">secret</a></span>
+{% endblock content %}

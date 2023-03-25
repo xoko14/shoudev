@@ -28,6 +28,9 @@
     background: var(--bg0);
     color: var(--fg);
     font-style: normal;
+    padding: 1em;
+    border-radius: 0.5em;
+    font-size: 14px;
 }
 
 .highlighted-code .hh0{ /* annotation */
