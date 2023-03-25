@@ -1,6 +1,10 @@
+Code for `main.rs`:
+
+```rust
 use std::{net::SocketAddr, fs::{self, File}, io::Read};
 
-use axum::{Router, routing::get, response::{Html, IntoResponse}, http::{StatusCode, header}, extract::Path};
+use axum::{Router, routing::get, response::{Html, Response, IntoResponse}, http::{StatusCode, header}, extract::Path};
+use pulldown_cmark::{Parser, html};
 use tera::Tera;
 
 use crate::content::PostFrontmatter;
@@ -84,7 +88,7 @@ async fn get_static_content(Path(file_name): Path<String>) -> impl IntoResponse{
     let response = match File::open(format!("content/static/{}", file_name)){
         Ok(mut f) => {
             let mut file = String::new();
-            _ = f.read_to_string(&mut file);
+            f.read_to_string(&mut file);
             let file_type = match mime_guess::from_path(file_name).first(){
                 Some(mime) => mime.to_string(),
                 None => "text/plain".to_owned()
@@ -104,3 +108,6 @@ async fn get_static_content(Path(file_name): Path<String>) -> impl IntoResponse{
 
     response
 }
+
+
+```

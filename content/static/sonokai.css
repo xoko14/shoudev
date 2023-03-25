@@ -1,0 +1,304 @@
+:root{
+    --black: #181819;
+    --bg-dim: #222327;
+    --bg0: #2c2e34;
+    --bg1: #33353f;
+    --bg2: #363944;
+    --bg3: #3b3e48;
+    --bg4: #414550;
+    --bg-red: #ff6077;
+    --diff-red: #55393d;
+    --bg-green: #a7df78;
+    --diff-green: #394634;
+    --bg-blue: #85d3f2;
+    --diff-blue: #354157;
+    --diff-yellow: #4e432f;
+    --fg: #e2e2e3;
+    --red: #fc5d7c;
+    --orange: #f39660;
+    --yellow: #e7c664;
+    --green: #9ed072;
+    --blue: #76cce0;
+    --purple: #b39df3;
+    --grey: #7f8490;
+    --grey-dim: #595f6f;
+}
+
+.highlighted-code{
+    background: var(--bg0);
+    color: var(--fg);
+    font-style: normal;
+}
+
+.highlighted-code .hh0{ /* annotation */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh1{ /* attribute */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh2{ /* boolean */
+    color: var(--purple);
+    font-style: normal;
+}
+.highlighted-code .hh3{ /* character */
+    color: var(--yellow);
+    font-style: normal;
+}
+.highlighted-code .hh4{ /* character.special */
+    color: var(--purple);
+    font-style: normal;
+}
+.highlighted-code .hh5{ /* comment */
+    color: var(--grey);
+    font-style: normal;
+}
+.highlighted-code .hh6{ /* conditional */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh7{ /* constant.builtin */
+    color: var(--purple);
+    font-style: italic;
+}
+.highlighted-code .hh8{ /* constant.macro */
+    color: var(--purple);
+    font-style: italic;
+}
+.highlighted-code .hh9{ /* constant */
+    color: var(--fg);
+    font-style: normal;
+}
+.highlighted-code .hh10{ /* constructor */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh11{ /* debug */
+    color: var(--yellow);
+    font-style: normal;
+}
+.highlighted-code .hh12{ /* define */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh13{ /* enviroment */
+    color: var(--purple);
+    font-style: normal;
+}
+.highlighted-code .hh14{ /* enviroment.name */
+    color: var(--blue);
+    font-style: normal;
+}
+.highlighted-code .hh15{ /* error */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh16{ /* exception */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh17{ /* field */
+    color: var(--orange);
+    font-style: normal;
+}
+.highlighted-code .hh18{ /* float */
+    color: var(--purple);
+    font-style: normal;
+}
+.highlighted-code .hh19{ /* function.builtin */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh20{ /* function.macro */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh21{ /* function */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh22{ /* function.call */
+color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh23{ /* include */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh24{ /* keyword */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh25{ /* keyword.function */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh26{ /* keyword.operator */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh27{ /* keyword.return */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh28{ /* label */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh29{ /* literal */
+    color: var(--yellow);
+    font-style: normal;
+}
+.highlighted-code .hh30{ /* math */
+    color: var(--yellow);
+    font-style: normal;
+}
+.highlighted-code .hh31{ /* method */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh32{ /* method.call */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh33{ /* namespace */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh34{ /* none */
+    color: var(--fg);
+    font-style: normal;
+}
+.highlighted-code .hh35{ /* number */
+    color: var(--purple);
+    font-style: normal;
+}
+.highlighted-code .hh36{ /* operator */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh37{ /* parameter */
+    color: var(--fg);
+    font-style: normal;
+}
+.highlighted-code .hh38{ /* parameter.reference */
+    color: var(--fg);
+    font-style: normal;
+}
+.highlighted-code .hh39{ /* pre.proc */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh40{ /* property */
+    color: var(--orange);
+    font-style: normal;
+}
+.highlighted-code .hh41{ /* punctuation.bracket */
+    color: var(--grey);
+    font-style: normal;
+}
+.highlighted-code .hh42{ /* punctuation.delimiter */
+    color: var(--grey);
+    font-style: normal;
+}
+.highlighted-code .hh43{ /* punctuation.special */
+    color: var(--yellow);
+    font-style: normal;
+}
+.highlighted-code .hh44{ /* repeat */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh45{ /* storage.class */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh46{ /* storage.class.lifetime */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh47{ /* strike */
+    color: var(--grey);
+    font-style: normal;
+}
+.highlighted-code .hh48{ /* string */
+    color: var(--yellow);
+    font-style: normal;
+}
+.highlighted-code .hh49{ /* string.escape */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh50{ /* string.regex */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh51{ /* string.special */
+    color: var(--purple);
+    font-style: normal;
+}
+.highlighted-code .hh52{ /* symbol */
+    color: var(--fg);
+    font-style: normal;
+}
+.highlighted-code .hh53{ /* tag */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh54{ /* tag.attribute */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh55{ /* tag.delimiter */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh56{ /* text */
+    color: var(--green);
+    font-style: normal;
+}
+.highlighted-code .hh57{ /* text.reference */
+    color: var(--orange);
+    font-style: italic;
+}
+.highlighted-code .hh58{ /* title */
+    color: var(--red);
+    font-style: normal;
+    font-weight: bold;
+}
+.highlighted-code .hh59{ /* todo */
+    color: var(--bg0);
+    background: var(--fg);
+    font-style: normal;
+    font-weight: bold;
+}
+.highlighted-code .hh60{ /* type */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh61{ /* type.builtin */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh62{ /* type.definition */
+    color: var(--blue);
+    font-style: italic;
+}
+.highlighted-code .hh63{ /* type.qualifier */
+    color: var(--red);
+    font-style: normal;
+}
+.highlighted-code .hh64{ /* uri */
+    color: var(--green);
+    font-style: normal;
+    text-decoration: underline;
+}
+.highlighted-code .hh65{ /* variable */
+    color: var(--fg);
+    font-style: normal;
+}
+.highlighted-code .hh66{ /* variable.builtin */
+    color: var(--purple);
+    font-style: italic;
+}

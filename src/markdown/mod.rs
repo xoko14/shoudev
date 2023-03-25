@@ -1,10 +1,6 @@
-use std::io::Write;
-
 use pulldown_cmark::{Parser, Event, Tag, CodeBlockKind, html};
 
-use crate::markdown::code_highlight::highlight_code;
-
-mod code_highlight;
+use crate::code_highlighting::highlight_code;
 
 pub fn parse(text: &str) -> String{
     let parser = Parser::new(text);
@@ -29,8 +25,11 @@ pub fn parse(text: &str) -> String{
                 //TODO: Stuff (highlighting, formatting...)
                 if let Some(current) = current.take() {
                     let mut f_code = String::new();
-                    highlight_code(&mut f_code, &current.source);
-                    return Event::Html(format!("<pre><code>{}</code></pre>", f_code).into());
+                    match highlight_code(&mut f_code, &current.source, &current.lang){
+                        Ok(_) => return Event::Html(format!("<pre class=highlighted-code><code>{}</code></pre>", f_code).into()),
+                        Err(_) => return Event::Html(format!("<pre class=highlighted-code><code>{}</code></pre>", &current.source).into())
+                    };
+                    
                 }
             },
             Event::Text(code) => {
