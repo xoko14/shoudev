@@ -20,8 +20,7 @@ pub fn highlight_code(w: &mut dyn Write, input: &str, language: &str) -> Result<
         let highlight = highlight?;
         match highlight{
             HighlightEvent::Source { start, end } => {
-                // THIS SHOULD BE ESCAPED!!!!
-                write!(w, "{}", &input[start..end]).unwrap();
+                write!(w, "{}", html_escape::encode_text(&input[start..end])).unwrap();
             },
             HighlightEvent::HighlightStart(Highlight(i)) => {
                 write!(w, r#"<i class=hh{}>"#, i).unwrap();

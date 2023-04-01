@@ -1,2 +1,8 @@
 /target
 **/*.dbt
+**/node_modules/
+
+static/index.css
+static/index.js
+static/index.js.map
+.env

@@ -38,7 +38,7 @@ pub async fn debug_post(Path(post_alias): Path<String>) -> (StatusCode, Html<Str
 }
 
 pub async fn get_static_content(Path(file_name): Path<String>) -> impl IntoResponse{
-    let response = match File::open(format!("content/static/{}", file_name)){
+    let response = match File::open(format!("static/{}", file_name)){
         Ok(mut f) => {
             let mut file = String::new();
             _ = f.read_to_string(&mut file);

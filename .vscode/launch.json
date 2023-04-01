@@ -7,15 +7,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'shoudev'",
+            "name": "Debug executable 'shoudev-site'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=shoudev",
-                    "--package=shoudev"
+                    "--bin=shoudev-site",
+                    "--package=shoudev-site"
                 ],
                 "filter": {
-                    "name": "shoudev",
+                    "name": "shoudev-site",
                     "kind": "bin"
                 }
             },
@@ -25,16 +25,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'shoudev'",
+            "name": "Debug unit tests in executable 'shoudev-site'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=shoudev",
-                    "--package=shoudev"
+                    "--bin=shoudev-site",
+                    "--package=shoudev-site"
                 ],
                 "filter": {
-                    "name": "shoudev",
+                    "name": "shoudev-site",
                     "kind": "bin"
                 }
             },
