@@ -5,4 +5,6 @@
 static/index.css
 static/index.js
 static/index.js.map
+static/**/*.js
+static/**/*.js.*
 .env

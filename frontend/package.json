@@ -7,13 +7,20 @@
   "scripts": {
     "watch": "npx tailwindcss -i ./base.css -o ../static/index.css --watch",
     "build-css": "npx tailwindcss -i ./base.css -o ../static/index.css --minify",
-    "build-js": "npx tsc",
+    "build-js": "npx webpack",
     "build": "npm run build-css && npm run build-js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^3.5.16",
     "tailwindcss": "^3.3.1",
-    "typescript": "^5.0.3"
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.3",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.4"
   }
 }
