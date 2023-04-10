@@ -41,7 +41,8 @@ async fn main() {
             "/debug",
             Router::new()
                 .route("/posts", get(routes::debug_posts))
-                .route("/post/:post_alias", get(routes::debug_post)),
+                .route("/post/:post_alias", get(routes::debug_post))
+                .route("/fail", get(routes::fail)),
         );
 
     let app = app.fallback(templates::error_404);
