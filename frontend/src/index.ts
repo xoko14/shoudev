@@ -6,10 +6,10 @@ let navbutton = document.getElementById("navbutton")!
 let navMenu = document.getElementById("menu")!
 
 navbutton.onclick = (e) => {
-    navMenu.classList.toggle("collapse")
+    navMenu.classList.toggle("hidden")
 }
 
 if ($(window).width() < 1024) {
-    navMenu.classList.add("collapse")
+    navMenu.classList.add("hidden")
     isMenuOpen = false;
 }

@@ -71,11 +71,21 @@ impl From<tera::Error> for ShoudevError {
     }
 }
 
+impl From<std::io::Error> for ShoudevError {
+    fn from(value: std::io::Error) -> Self {
+        Self::new(ShoudevErrorType::GenericNotFound, StatusCode::NOT_FOUND)
+    }
+}
+
 impl IntoResponse for ShoudevError {
     fn into_response(self) -> axum::response::Response {
         match self.status_code {
-            _ => templates::error_500().map_err(map_fallback),
+            StatusCode::NOT_FOUND => match self.error_type {
+                _ => templates::error_404(),
+            },
+            _ => templates::error_500(),
         }
+        .map_err(map_fallback)
         .into_response()
     }
 }

@@ -1,14 +1,21 @@
 let path = require('path');
 
 module.exports = {
-  let webpack = require('webpack');
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, '../static')
+  entry: './src/index.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, '../static'),
   }
 }

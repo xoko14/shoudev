@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.ts",
   "keywords": [],
   "scripts": {
     "watch": "npx tailwindcss -i ./base.css -o ../static/index.css --watch",

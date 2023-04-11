@@ -45,7 +45,7 @@ async fn main() {
                 .route("/fail", get(routes::fail)),
         );
 
-    let app = app.fallback(templates::error_404);
+    let app = app.fallback(routes::fallback_404);
 
     let addr = match serve_env == "prod" {
         true => SocketAddr::from(([0, 0, 0, 0], 3000)),

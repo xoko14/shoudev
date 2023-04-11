@@ -32,11 +32,9 @@ pub fn render_homepage(body: &str) -> HtmlResponse {
     (StatusCode::OK, Html(rendered))
 }
 
-pub async fn error_404() -> HtmlResponse {
-    let rendered = TEMPLATES
-        .render("error_pages/404.html", &Context::new())
-        .expect("error");
-    (StatusCode::NOT_FOUND, Html(rendered))
+pub fn error_404() -> Result<HtmlResponse, ShoudevError> {
+    let rendered = TEMPLATES.render("error_pages/404.html", &Context::new())?;
+    Ok((StatusCode::NOT_FOUND, Html(rendered)))
 }
 
 pub fn error_500() -> Result<HtmlResponse, ShoudevError> {
