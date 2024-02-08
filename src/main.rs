@@ -36,6 +36,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(routes::root))
+        .route("/about", get(routes::about))
         .route("/:file", get(routes::get_static_content))
         .nest(
             "/debug",

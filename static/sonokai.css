@@ -31,6 +31,9 @@
     padding: 1em;
     border-radius: 0.5em;
     font-size: 14px;
+    border-style: solid;
+    border-color: var(--black);
+    border-width: 0.25em;
 }
 
 .highlighted-code .hh0{ /* annotation */

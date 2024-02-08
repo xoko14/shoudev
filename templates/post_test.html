@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/sonokai.css">
 {% endblock head %}
 {% block content %}
-<h1>{{post.title}}</h1>
+<h1 class="post-title">{{post.title}}</h1>
 <h4>By {{post.author}}</h4>
 <p>{{post_body | safe}}</p>
 {% endblock content %}

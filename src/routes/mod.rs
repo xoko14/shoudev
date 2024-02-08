@@ -18,9 +18,17 @@ use crate::{
 type HtmlResponse = (StatusCode, Html<String>);
 
 pub async fn root() -> Result<HtmlResponse, ShoudevError> {
-    let homepage = fs::read_to_string("content/pages/homepage.md").unwrap_or("oopsies".to_owned());
+    let homepage = fs::read_to_string("content/pages/homepage.md")?;
     let html_output = markdown::parse(&homepage);
     let response = templates::render_homepage(&html_output);
+    Ok(response)
+}
+
+pub async fn about() -> Result<HtmlResponse, ShoudevError>{
+    tracing::info!("about");
+    let aboutpage = fs::read_to_string("content/pages/about.md")?;
+    let html_output = markdown::parse(&aboutpage);
+    let response = templates::render_generic("About", &html_output)?;
     Ok(response)
 }
 
@@ -67,6 +75,7 @@ pub async fn debug_post(Path(post_alias): Path<String>) -> Result<HtmlResponse, 
 pub async fn get_static_content(
     Path(file_name): Path<String>,
 ) -> Result<impl IntoResponse, ShoudevError> {
+    tracing::info!("Requested resource {}", file_name);
     let mut file = String::new();
     File::open(format!("static/{}", file_name))?.read_to_string(&mut file)?;
 

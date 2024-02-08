@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1{
+    @apply text-xl;
+}
+
+.post-title {
+    @apply text-3xl;
+}
+
+#content > *{
+    max-width: min(760px,100%);
+    margin: 0 auto;
+}
+
+.highlighted-code{
+    @apply m-2;
+    overflow: scroll;
+}
+
+.svg-profile{
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: #181819;
+    border-width: 0.25em;
+}
+
+#content a{
+    @apply hover:underline text-purple-400;
+}

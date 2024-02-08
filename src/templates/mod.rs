@@ -32,6 +32,15 @@ pub fn render_homepage(body: &str) -> HtmlResponse {
     (StatusCode::OK, Html(rendered))
 }
 
+pub fn render_generic(title: &str, body: &str) -> Result<HtmlResponse, ShoudevError>{
+    let mut tpl_ctx = Context::new();
+    tpl_ctx.insert("page_title", title);
+    tpl_ctx.insert("page_body", body);
+
+    let rendered = TEMPLATES.render("generic.html", &tpl_ctx)?;
+    Ok((StatusCode::OK, Html(rendered)))
+}
+
 pub fn error_404() -> Result<HtmlResponse, ShoudevError> {
     let rendered = TEMPLATES.render("error_pages/404.html", &Context::new())?;
     Ok((StatusCode::NOT_FOUND, Html(rendered)))
