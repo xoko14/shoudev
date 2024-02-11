@@ -35,5 +35,6 @@ h1{
     @apply pt-3;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
