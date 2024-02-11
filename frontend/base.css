@@ -30,3 +30,10 @@ h1{
 #content a{
     @apply hover:underline text-purple-400;
 }
+
+#badges {
+    @apply pt-3;
+    display: flex;
+    justify-content: center;
+}
+

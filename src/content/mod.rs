@@ -4,6 +4,8 @@ use ignore::{types::TypesBuilder, WalkBuilder};
 use serde::{Serialize, Deserialize};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
+pub mod badges;
+
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct PostFrontmatter {
     pub title: String,

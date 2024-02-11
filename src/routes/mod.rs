@@ -4,10 +4,11 @@ use std::{
 };
 
 use axum::{
-    extract::Path,
+    extract::{Path, Request},
     http::{header, StatusCode},
     response::{Html, IntoResponse},
 };
+use tracing_subscriber::fmt::format;
 
 use crate::{
     content::PostFrontmatter,
@@ -92,6 +93,17 @@ pub async fn fail() -> Result<(), ShoudevError> {
     Err(ShoudevError::err())
 }
 
-pub async fn fallback_404() -> Result<HtmlResponse, ShoudevError> {
-    templates::error_404()
+pub async fn fallback(request: Request) -> Result<impl IntoResponse, ShoudevError> {
+    let path = request.uri();
+    let mut file = Vec::new();
+    tracing::info!("requested resource static{}", path);
+    File::open(format!("static{}", path))?.read_to_end(&mut file)?;
+
+    let file_type = match mime_guess::from_path(path.to_string()).first() {
+        Some(mime) => mime.to_string(),
+        None => "text/plain".to_owned(),
+    };
+
+    let response = (StatusCode::OK, [(header::CONTENT_TYPE, file_type)], file);
+    Ok(response)
 }

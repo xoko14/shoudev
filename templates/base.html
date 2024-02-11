@@ -47,6 +47,11 @@
     <div id="content" class="px-12 py-6">
         {% block content %}
         {% endblock content %}
+        <div id="badges">
+            {% for badge in badges %}
+            <img src="/badges/{{ badge.file }}"/>
+            {% endfor %}
+        </div>
     </div>
     <script src="/main.js"></script>
 </body>

@@ -1,9 +1,10 @@
 use std::{env, net::SocketAddr};
 
 use axum::{routing::get, Router};
+use content::badges::Badges;
 use tera::Tera;
 
-use crate::content::PostFrontmatter;
+use crate::content::{PostFrontmatter, badges::get_badge_data};
 
 mod code_highlighting;
 mod content;
@@ -25,6 +26,8 @@ lazy_static::lazy_static! {
         tera.autoescape_on(vec![".html", ".sql"]);
         tera
     };
+    static ref BADGES: Badges = get_badge_data();
+
 }
 
 #[tokio::main]
@@ -37,7 +40,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(routes::root))
         .route("/about", get(routes::about))
-        .route("/:file", get(routes::get_static_content))
+        //.route("/:file", get(routes::get_static_content))
         .nest(
             "/debug",
             Router::new()
@@ -46,15 +49,15 @@ async fn main() {
                 .route("/fail", get(routes::fail)),
         );
 
-    let app = app.fallback(routes::fallback_404);
+    let app = app.fallback(routes::fallback);
 
     let addr = match serve_env == "prod" {
         true => SocketAddr::from(([0, 0, 0, 0], 3000)),
         false => SocketAddr::from(([127, 0, 0, 1], 3000)),
     };
 
+    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
+
     tracing::info!("listening on http://{}", addr);
-    _ = axum::Server::bind(&addr)
-        .serve(app.into_make_service())
-        .await;
+    axum::serve(listener, app).await.unwrap();
 }

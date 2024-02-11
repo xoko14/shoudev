@@ -64,6 +64,7 @@ impl From<tree_sitter_highlight::Error> for ShoudevError {
 
 impl From<tera::Error> for ShoudevError {
     fn from(value: tera::Error) -> Self {
+        tracing::info!("Tera error: {:?}", value.kind);
         Self::new(
             ShoudevErrorType::ErrorTemplateNotFound,
             StatusCode::INTERNAL_SERVER_ERROR,
