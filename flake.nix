@@ -14,6 +14,9 @@
         pkgs = import nixpkgs {
           inherit system overlays;
         };
+        stableToolchain = pkgs.rust-bin.stable.latest.minimal.override {
+          extensions = [ "rust-src" "rust-analyzer"];
+        };
       in
       with pkgs;
       {
@@ -23,7 +26,7 @@
             pkg-config
             eza
             fd
-            rust-bin.beta.latest.default
+            stableToolchain
             nodejs
           ];
 
@@ -32,6 +35,7 @@
             alias find=fd
           '';
           LIBCLANG_PATH = "${pkgs.llvmPackages_11.libclang.lib}/lib";
+          RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
         };
       }
     );

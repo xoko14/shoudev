@@ -21,8 +21,9 @@ type HtmlResponse = (StatusCode, Html<String>);
 pub async fn root() -> Result<HtmlResponse, ShoudevError> {
     let homepage = fs::read_to_string("content/pages/homepage.md")?;
     let html_output = markdown::parse(&homepage);
-    let response = templates::render_homepage(&html_output);
-    Ok(response)
+    let posts = POSTS.iter().map(|p| p.0.clone()).collect();
+    let response = templates::render_homepage(&html_output, &posts);
+    Ok(response?)
 }
 
 pub async fn about() -> Result<HtmlResponse, ShoudevError>{
@@ -33,7 +34,7 @@ pub async fn about() -> Result<HtmlResponse, ShoudevError>{
     Ok(response)
 }
 
-pub async fn debug_posts() -> Result<HtmlResponse, ShoudevError> {
+pub async fn get_posts() -> Result<HtmlResponse, ShoudevError> {
     let posts: Vec<PostFrontmatter> = POSTS
         .iter()
         .map(|p| {
@@ -43,10 +44,10 @@ pub async fn debug_posts() -> Result<HtmlResponse, ShoudevError> {
         .collect();
 
     let response = templates::render_posts(&posts);
-    Ok(response)
+    Ok(response?)
 }
 
-pub async fn debug_post(Path(post_alias): Path<String>) -> Result<HtmlResponse, ShoudevError> {
+pub async fn get_post(Path(post_alias): Path<String>) -> Result<HtmlResponse, ShoudevError> {
     let (post, post_dir) = match POSTS.iter().find(|item| item.0.alias == post_alias) {
         Some(p) => p,
         None => {
@@ -70,7 +71,7 @@ pub async fn debug_post(Path(post_alias): Path<String>) -> Result<HtmlResponse, 
     let html_output = markdown::parse(&post_body);
 
     let result = templates::render_post(post, &html_output);
-    Ok(result)
+    Ok(result?)
 }
 
 pub async fn get_static_content(

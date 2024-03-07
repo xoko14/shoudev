@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Test{% endblock title %}
+{% block content %}
+<div id="content">
+    {% for post in posts %}
+    
+    <a href="/posts/{{ post.alias }}">
+        <div class="post-overview">
+            <div class="flex flex-col post-overview">
+                <span class="post-overview-title">{{ post.title }}</span>
+                <span class="post-overview-date">{{ post.date_posted }}</span>
+                <p class="post-overview-description">{{ post.description }}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</ul>
+{% endblock content %}

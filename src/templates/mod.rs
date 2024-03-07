@@ -5,31 +5,31 @@ use crate::{content::PostFrontmatter, errors::ShoudevError, TEMPLATES, BADGES};
 
 type HtmlResponse = (StatusCode, Html<String>);
 
-pub fn render_posts(posts: &Vec<PostFrontmatter>) -> HtmlResponse {
+pub fn render_posts(posts: &Vec<PostFrontmatter>) -> Result<HtmlResponse, ShoudevError>{
     let mut tpl_ctx = get_common_context();
     tpl_ctx.insert("posts", &posts);
 
     let rendered = TEMPLATES
-        .render("posts_test.html", &tpl_ctx)
-        .expect("rendering error");
-    (StatusCode::OK, Html(rendered))
+        .render("posts/posts.html", &tpl_ctx)?;
+    Ok((StatusCode::OK, Html(rendered)))
 }
 
-pub fn render_post(post: &PostFrontmatter, body: &str) -> HtmlResponse {
+pub fn render_post(post: &PostFrontmatter, body: &str) -> Result<HtmlResponse, ShoudevError> {
     let mut tpl_ctx = get_common_context();
     tpl_ctx.insert("post", post);
     tpl_ctx.insert("post_body", body);
 
-    let rendered = TEMPLATES.render("post_test.html", &tpl_ctx).expect("error");
-    (StatusCode::OK, Html(rendered))
+    let rendered = TEMPLATES.render("posts/post.html", &tpl_ctx)?;
+    Ok((StatusCode::OK, Html(rendered)))
 }
 
-pub fn render_homepage(body: &str) -> HtmlResponse {
+pub fn render_homepage(body: &str, posts: &Vec<PostFrontmatter>) -> Result<HtmlResponse, ShoudevError>{
     let mut tpl_ctx = get_common_context();
     tpl_ctx.insert("page_body", body);
+    tpl_ctx.insert("posts", posts);
 
-    let rendered = TEMPLATES.render("homepage.html", &tpl_ctx).expect("error");
-    (StatusCode::OK, Html(rendered))
+    let rendered = TEMPLATES.render("homepage.html", &tpl_ctx)?;
+    Ok((StatusCode::OK, Html(rendered)))
 }
 
 pub fn render_generic(title: &str, body: &str) -> Result<HtmlResponse, ShoudevError>{

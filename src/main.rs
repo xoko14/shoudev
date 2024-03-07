@@ -40,12 +40,12 @@ async fn main() {
     let app = Router::new()
         .route("/", get(routes::root))
         .route("/about", get(routes::about))
+        .route("/posts", get(routes::get_posts))
+        .route("/posts/:post_alias", get(routes::get_post))
         //.route("/:file", get(routes::get_static_content))
         .nest(
             "/debug",
             Router::new()
-                .route("/posts", get(routes::debug_posts))
-                .route("/post/:post_alias", get(routes::debug_post))
                 .route("/fail", get(routes::fail)),
         );
 

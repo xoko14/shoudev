@@ -4,5 +4,23 @@
 <link rel="stylesheet" href="/sonokai.css">
 {% endblock head %}
 {% block content %}
+<div class="pb-4">
 {{ page_body | safe }}
+</div>
+<div>
+    <p class="text-2xl">Latest posts</p>
+    <div class="flex flex-row post-overview-list">
+        {% for post in posts %}
+        <a href="/posts/{{ post.alias }}">
+            <div class="flex flex-col post-overview">
+                <span class="post-overview-title">{{ post.title }}</span>
+                <span class="post-overview-date">{{ post.date_posted }}</span>
+                <p class="post-overview-description">{{ post.description }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock content %}

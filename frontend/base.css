@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-h1{
+body {
+    font-family: "Inria Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+h1 {
     @apply text-xl;
 }
 
@@ -10,31 +15,53 @@ h1{
     @apply text-3xl;
 }
 
-#content > *{
-    max-width: min(760px,100%);
-    margin: 0 auto;
+#content>* {
+    max-width: min(760px, 100%);
+    margin: 1rem auto;
 }
 
-.highlighted-code{
-    @apply m-2;
-    overflow: scroll;
-}
-
-.svg-profile{
+#content>p>img{
     border-radius: 0.5em;
     border-style: solid;
     border-color: #181819;
     border-width: 0.25em;
 }
 
-#content a{
+#content>hr {
+    border-top: 0.25rem dotted
+}
+
+.highlighted-code {
+    @apply m-2;
+    overflow: scroll;
+}
+
+.svg-profile {
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: #181819;
+    border-width: 0.25em;
+}
+
+#content a {
     @apply hover:underline text-purple-400;
 }
 
 #badges {
-    @apply pt-3;
+    @apply pt-4;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
+.post-overview-list {
+    @apply flex-wrap;
+}
+
+.post-overview {
+    @apply bg-zinc-700 p-2 m-1 rounded hover:bg-zinc-600;
+}
+
+.post-overview-title {
+    @apply text-xl;
+}

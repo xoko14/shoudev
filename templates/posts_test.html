@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block title %}Test{% endblock title %}
-{% block content %}
-<ul>
-    {% for post in posts %}
-    <li><a href="/debug/post/{{ post.alias }}">{{ post.title }}</a></li>
-    {% endfor %}
-</ul>
-{% endblock content %}
