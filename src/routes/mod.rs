@@ -105,6 +105,6 @@ pub async fn fallback(request: Request) -> Result<impl IntoResponse, ShoudevErro
         None => "text/plain".to_owned(),
     };
 
-    let response = (StatusCode::OK, [(header::CONTENT_TYPE, file_type)], file);
+    let response = (StatusCode::OK, [(header::CONTENT_TYPE, file_type), (header::ACCESS_CONTROL_ALLOW_ORIGIN, "*".to_string())], file);
     Ok(response)
 }
